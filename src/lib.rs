@@ -10,9 +10,9 @@
 #![allow(non_camel_case_types)]
 #![feature(c_variadic)]
 
-use core::ffi::{c_char, c_int, c_long, c_uint, c_ulong, c_void, VaList};
+pub use core::ffi::{c_char, c_int, c_long, c_uint, c_ulong, c_void, va_list};
 #[cfg(feature = "have_long_long")]
-use core::ffi::{c_longlong, c_ulonglong};
+pub use core::ffi::{c_longlong, c_ulonglong};
 
 pub type time_t = u32;
 pub type clockid_t = u8;
@@ -412,7 +412,7 @@ extern "C" {
     ) -> c_int;
     #[cfg(feature = "pthread")]
     pub fn nx_pthread_exit(a1: pthread_addr_t) -> !;
-    pub fn nx_vsyslog(a1: c_int, a2: *const c_char, a3: *mut VaList) -> c_int;
+    pub fn nx_vsyslog(a1: c_int, a2: *const c_char, a3: *mut va_list) -> c_int;
     pub fn nxsched_get_stackinfo(a1: pid_t, a2: *mut stackinfo_s) -> c_int;
     #[cfg(feature = "file_stream")]
     pub fn nxsched_get_streams() -> *mut streamlist;
@@ -1318,16 +1318,16 @@ extern "C" {
     #[cfg(feature = "file_stream")]
     pub fn ungetc(a1: c_int, a2: *mut FILE) -> c_int;
     pub fn usleep(a1: useconds_t) -> c_int;
-    pub fn vasprintf(a1: *mut *mut c_char, a2: *const c_char, a3: VaList) -> c_int;
+    pub fn vasprintf(a1: *mut *mut c_char, a2: *const c_char, a3: va_list) -> c_int;
     #[cfg(feature = "file_stream")]
-    pub fn vfprintf(a1: *mut FILE, a2: *const c_char, a3: VaList) -> c_int;
-    pub fn vprintf(a1: *const c_char, a2: VaList) -> c_int;
+    pub fn vfprintf(a1: *mut FILE, a2: *const c_char, a3: va_list) -> c_int;
+    pub fn vprintf(a1: *const c_char, a2: va_list) -> c_int;
     #[cfg(feature = "file_stream")]
-    pub fn vscanf(a1: *const c_char, a2: VaList) -> c_int;
-    pub fn vsnprintf(a1: *mut c_char, a2: size_t, a3: *const c_char, a4: VaList) -> c_int;
-    pub fn vsprintf(a1: *mut c_char, a2: *const c_char, a3: VaList) -> c_int;
-    pub fn vsscanf(a1: *const c_char, a2: *const c_char, a3: VaList) -> c_int;
-    pub fn vsyslog(a1: c_int, a2: *const c_char, a3: VaList) -> c_void;
+    pub fn vscanf(a1: *const c_char, a2: va_list) -> c_int;
+    pub fn vsnprintf(a1: *mut c_char, a2: size_t, a3: *const c_char, a4: va_list) -> c_int;
+    pub fn vsprintf(a1: *mut c_char, a2: *const c_char, a3: va_list) -> c_int;
+    pub fn vsscanf(a1: *const c_char, a2: *const c_char, a3: va_list) -> c_int;
+    pub fn vsyslog(a1: c_int, a2: *const c_char, a3: va_list) -> c_void;
     pub fn wcrtomb(a1: *mut c_char, a2: wchar_t, a3: *mut mbstate_t) -> size_t;
     pub fn wcscmp(a1: *const wchar_t, a2: *const wchar_t) -> c_int;
     pub fn wcscoll(a1: *const wchar_t, a2: *const wchar_t) -> c_int;
