@@ -153,7 +153,8 @@ pub type id_t = c_int;
 pub type key_t = i32;
 pub type ptrdiff_t = isize;
 
-pub type wchar_t = u32; // FIXME: this is a guess
+// This appears to be how `wchar_t` is defined in newlibc in the past.
+pub type wchar_t = u16;
 
 pub type wint_t = c_int;
 pub type wctype_t = c_int;
