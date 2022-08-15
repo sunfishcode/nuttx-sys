@@ -6,6 +6,7 @@
 //!
 //! [incubator-nuttx]: https://github.com/apache/incubator-nuttx
 
+#![no_std]
 #![allow(non_camel_case_types)]
 #![feature(c_variadic)]
 
