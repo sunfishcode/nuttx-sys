@@ -1,0 +1,83 @@
+[package]
+description = "Raw bindings to NuttX APIs."
+name = "nuttx-sys"
+version = "0.0.0"
+edition = "2021"
+authors = ["Dan Gohman <dev@sunfishcode.online>"]
+documentation = "https://docs.rs/nuttx-sys"
+license = "Apache-2.0"
+repository = "https://github.com/sunfishcode/nuttx-sys"
+keywords = ["api", "file", "network", "syscall"]
+categories = ["os::unix-apis", "date-and-time", "filesystem", "network-programming"]
+include = ["src", "Cargo.toml", "NOTICE", "LICENSE", "/*.md"]
+
+[features]
+# Enable features that are named `CONFIG_DISABLE_*` in NuttX by default.
+default = [
+    "binfmt",
+    "pthread",
+    "environ",
+    "mountpoint",
+    "mqueue",
+    "posix_timers",
+]
+binfmt = []
+pthread = []
+environ = []
+mountpoint = []
+mqueue = []
+posix_timers = []
+
+# `CONFIG_*` features not enabled by default.
+arch_have_fork = []
+arch_math = []
+boardctl = []
+build_flat = []
+build_kernel = []
+cancellation_points = []
+clock_timekeeping = []
+cpp_have_varargs = []
+crypto_random_pool = []
+debug_error = []
+debug_info = []
+debug_warn = []
+dev_fifo = []
+dev_pipe = []
+event_fd = []
+file_stream = []
+fs_aio = []
+fs_largefile = []
+fs_named_semaphores = []
+fs_rammap = []
+have_double = []
+have_long_double = []
+have_long_long = []
+libc_dlfcn = []
+libc_execfunc = []
+libc_locale = []
+libc_netdb = []
+libm = []
+mm_shm = []
+module = []
+net = []
+net_ipv4 = []
+pipes = []
+priority_inheritance = []
+pseudofs_softlinks = []
+pthread_mutex_types = []
+pthread_mutex_unsafe = []
+sched_backtrace = []
+sched_have_parent = []
+sched_user_identity = []
+sched_waitpid = []
+serial_termios = []
+small_memory = []
+smp = []
+smp_ncpus_16 = []
+smp_ncpus_32 = []
+smp_ncpus_8 = []
+stack_canaries = []
+system_time64 = []
+task_name = []
+timer_fd = []
+tls_task = []
