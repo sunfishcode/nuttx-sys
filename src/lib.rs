@@ -466,10 +466,7 @@ extern "C" {
     pub fn pthread_join(a1: pthread_t, a2: *mut pthread_addr_t) -> c_int;
     #[cfg(feature = "pthread")]
     pub fn pthread_kill(a1: pthread_t, a2: c_int) -> c_int;
-    #[cfg(all(
-        feature = "pthread",
-        not(feature = "pthread_mutex_unsafe")
-    ))]
+    #[cfg(all(feature = "pthread", not(feature = "pthread_mutex_unsafe")))]
     pub fn pthread_mutex_consistent(a1: *mut pthread_mutex_t) -> c_int;
     #[cfg(feature = "pthread")]
     pub fn pthread_mutex_destroy(a1: *mut pthread_mutex_t) -> c_int;
