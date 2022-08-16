@@ -90,7 +90,6 @@ pub type sq_entry_t = FIXME;
 pub type sigset_t = FIXME;
 pub type intmax_t = FIXME;
 pub type uintmax_t = FIXME;
-pub type sem_t = FIXME;
 pub type dirent = FIXME;
 pub type dq_entry_t = FIXME;
 pub type dq_queue_t = FIXME;
@@ -217,6 +216,23 @@ pub type cpu_set_t = u8;
 pub type cpu_set_t = u16;
 #[cfg(feature = "smp_ncpus_32")]
 pub type cpu_set_t = u32;
+
+#[repr(C)]
+#[derive(Debug, Clone)]
+pub struct sem_t {
+    semcount: i16, // FIXME: volatile!?
+
+    #[cfg(feature = "priority_inheritance")]
+    flags: u8,
+
+    #[cfg(feature = "priority_inheritance")]
+    #[cfg(feature = "sem_preallocholders")] // FIXME: > 0
+    hhead: semholder_t,
+
+    #[cfg(feature = "priority_inheritance")]
+    #[cfg(not(feature = "sem_preallocholders"))] // FIXME: > 0
+    holder: [semholder_t; 2],
+}
 
 #[cfg(feature = "net")]
 #[repr(C)]
