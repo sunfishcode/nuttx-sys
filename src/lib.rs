@@ -1584,3 +1584,16 @@ pub const F_OK: c_int = 0;
 pub const X_OK: c_int = 1;
 pub const W_OK: c_int = 2;
 pub const R_OK: c_int = 4;
+
+pub const DT_UNKNOWN: c_int = 0;
+pub const DT_FIFO: c_int = 1;
+pub const DT_CHR: c_int = 2;
+pub const DT_SEM: c_int = 3;
+pub const DT_DIRECTORY: c_int = 4;
+pub const DT_MQ: c_int = 5;
+pub const DT_BLK: c_int = 6;
+pub const DT_SHM: c_int = 7;
+pub const DT_FILE: c_int = 8;
+pub const DT_MTD: c_int = 9;
+pub const DT_LINK: c_int = 10;
+pub const DT_SOCK: c_int = 12;
