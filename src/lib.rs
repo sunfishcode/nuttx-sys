@@ -230,18 +230,18 @@ pub type cpu_set_t = u32;
 #[repr(C)]
 #[derive(Debug, Clone)]
 pub struct sem_t {
-    semcount: i16, // FIXME: volatile!?
+    pub semcount: i16, // FIXME: volatile!?
 
     #[cfg(feature = "priority_inheritance")]
-    flags: u8,
+    pub flags: u8,
 
     #[cfg(feature = "priority_inheritance")]
     #[cfg(feature = "sem_preallocholders")] // FIXME: > 0
-    hhead: semholder_t,
+    pub hhead: semholder_t,
 
     #[cfg(feature = "priority_inheritance")]
     #[cfg(not(feature = "sem_preallocholders"))] // FIXME: > 0
-    holder: [semholder_t; 2],
+    pub holder: [semholder_t; 2],
 }
 
 #[cfg(feature = "net")]
