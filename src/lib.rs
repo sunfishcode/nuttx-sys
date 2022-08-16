@@ -63,6 +63,19 @@ pub struct iovec {
     pub iov_len: size_t,
 }
 
+pub type nfds_t = c_uint;
+pub type pollevent_t = u32;
+
+#[repr(C)]
+pub struct pollfd {
+    pub fd: c_int,
+    pub events: pollevent_t,
+    pub revents: pollevent_t,
+    pub ptr: *mut c_void,
+    pub sem: sem_t,
+    pub r#priv: *mut c_void,
+}
+
 /// These types need to be ported from the nuttx headers.
 pub type FIXME = c_void;
 
@@ -88,7 +101,6 @@ pub type main_t = FIXME;
 pub type mq_attr = FIXME;
 pub type mqd_t = FIXME;
 pub type nfds_t = FIXME;
-pub type pollfd = FIXME;
 pub type posix_spawnattr_t = FIXME;
 pub type posix_spawn_file_actions_t = FIXME;
 pub type _sa_handler_t = FIXME;
@@ -1534,16 +1546,16 @@ pub const O_WRONLY: c_int = 1 << 1;
 pub const O_WROK: c_int = O_WRONLY;
 pub const PIPE_BUF: usize = _POSIX_PIPE_BUF;
 pub const _POSIX_PIPE_BUF: usize = 512;
-pub const POLLERR: c_int = 0x08;
-pub const POLLHUP: c_int = 0x10;
-pub const POLLIN: c_int = 0x01;
-pub const POLLNVAL: c_int = 0x20;
-pub const POLLOUT: c_int = 0x04;
-pub const POLLPRI: c_int = 0x02;
-pub const POLLRDBAND: c_int = 0x01;
-pub const POLLRDNORM: c_int = 0x01;
-pub const POLLWRBAND: c_int = 0x04;
-pub const POLLWRNORM: c_int = 0x04;
+pub const POLLERR: i16 = 0x08;
+pub const POLLHUP: i16 = 0x10;
+pub const POLLIN: i16 = 0x01;
+pub const POLLNVAL: i16 = 0x20;
+pub const POLLOUT: i16 = 0x04;
+pub const POLLPRI: i16 = 0x02;
+pub const POLLRDBAND: i16 = 0x01;
+pub const POLLRDNORM: i16 = 0x01;
+pub const POLLWRBAND: i16 = 0x04;
+pub const POLLWRNORM: i16 = 0x04;
 pub const PRIO_PGRP: c_int = 2;
 pub const PRIO_PROCESS: c_int = 1;
 pub const PRIO_USER: c_int = 3;
