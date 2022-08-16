@@ -10,7 +10,10 @@
 #![allow(non_camel_case_types)]
 #![feature(c_variadic)]
 
-pub use core::ffi::{c_char, c_int, c_long, c_uint, c_ulong, c_void, VaList as va_list};
+pub use core::ffi::{
+    c_char, c_int, c_long, c_schar, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
+    VaList as va_list,
+};
 #[cfg(feature = "have_long_long")]
 pub use core::ffi::{c_longlong, c_ulonglong};
 
