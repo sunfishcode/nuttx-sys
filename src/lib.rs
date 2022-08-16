@@ -81,11 +81,11 @@ pub struct pollfd {
 #[repr(C)]
 #[derive(Debug, Clone)]
 pub struct utsname {
-    sysname: [c_char; SYS_NAMELEN],
-    nodename: [c_char; HOST_NAME_MAX],
-    release: [c_char; SYS_NAMELEN],
-    version: [c_char; VERSION_NAMELEN],
-    machine: [c_char; SYS_NAMELEN],
+    pub sysname: [c_char; SYS_NAMELEN],
+    pub nodename: [c_char; HOST_NAME_MAX],
+    pub release: [c_char; SYS_NAMELEN],
+    pub version: [c_char; VERSION_NAMELEN],
+    pub machine: [c_char; SYS_NAMELEN],
 }
 
 /// These types need to be ported from the nuttx headers.
