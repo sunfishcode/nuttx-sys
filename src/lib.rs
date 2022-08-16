@@ -67,6 +67,7 @@ pub type nfds_t = c_uint;
 pub type pollevent_t = u32;
 
 #[repr(C)]
+#[derive(Debug, Clone)]
 pub struct pollfd {
     pub fd: c_int,
     pub events: pollevent_t,
