@@ -22,6 +22,7 @@ pub type clockid_t = u8;
 pub type timer_t = *mut c_void;
 
 #[repr(C)]
+#[derive(Clone, Debug)]
 pub struct timespec {
     pub tv_sec: time_t,
     pub tv_nsec: c_long,
@@ -77,6 +78,16 @@ pub struct pollfd {
     pub r#priv: *mut c_void,
 }
 
+#[repr(C)]
+#[derive(Debug, Clone)]
+pub struct utsname {
+    sysname: [c_char; SYS_NAMELEN],
+    nodename: [c_char; HOST_NAME_MAX],
+    release: [c_char; SYS_NAMELEN],
+    version: [c_char; VERSION_NAMELEN],
+    machine: [c_char; SYS_NAMELEN],
+}
+
 /// These types need to be ported from the nuttx headers.
 pub type FIXME = c_void;
 
@@ -84,7 +95,6 @@ pub type timezone = FIXME;
 pub type mbstate_t = FIXME;
 pub type tm = FIXME;
 pub type uu16 = FIXME;
-pub type utsname = FIXME;
 pub type sq_queue_t = FIXME;
 pub type sq_entry_t = FIXME;
 pub type sigset_t = FIXME;
@@ -1629,3 +1639,7 @@ pub const DT_REG: u8 = 8;
 pub const DT_MTD: u8 = 9;
 pub const DT_LNK: u8 = 10;
 pub const DT_SOCK: u8 = 12;
+
+pub const SYS_NAMELEN: usize = 21;
+pub const VERSION_NAMELEN: usize = 41;
+pub const HOST_NAME_MAX: usize = 32;
