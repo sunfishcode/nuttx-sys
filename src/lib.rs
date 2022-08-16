@@ -100,7 +100,6 @@ pub type itimerval = FIXME;
 pub type main_t = FIXME;
 pub type mq_attr = FIXME;
 pub type mqd_t = FIXME;
-pub type nfds_t = FIXME;
 pub type posix_spawnattr_t = FIXME;
 pub type posix_spawn_file_actions_t = FIXME;
 pub type _sa_handler_t = FIXME;
